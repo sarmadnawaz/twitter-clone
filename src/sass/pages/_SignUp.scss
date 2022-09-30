@@ -1,0 +1,29 @@
+.signUp-page {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap : 10px
+}
+.signUp-page__header {
+    font-size: 52px;
+    margin: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.signUp-page__sub-header {
+    font-size: 36px;
+    margin-bottom: 15px;
+    margin: 0;
+}
+.signUp-page__signUp-bar, .signUp-page__login-bar {
+    width: 270px;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 1.5;
+    border: 1px black solid;
+    padding: 5px;
+    border-radius: 50px;
+    text-align: center;
+}
