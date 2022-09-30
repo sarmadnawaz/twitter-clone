@@ -1,10 +1,24 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
+import { signInUser } from '../Actions/auth'
+
 
 function SignInContainer() {
-  const [email, setEmail] = React.useState(null);
-  const [password, setPassword] = React.useState(null);
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [error, setError] = React.useState(null)
+
+  const handleSignIn = () => {
+    signInUser(email, password)
+    .then(
+      (userCredential) => {
+        console.log(userCredential.user)
+        error  && setError(null)
+      },
+      (error) => setError(error.message)
+    )
+  }
 
   return (
     <div className="signIn">
@@ -28,7 +42,8 @@ function SignInContainer() {
         placeholder="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <div className="btn signIn__signIn-bar">Login</div>
+      {error && <p style={{ color : 'red' }}>Invalid user credientials</p>}
+      <div className="btn signIn__signIn-bar" onClick={handleSignIn}>Login</div>
       <div className="signIn__ques">
         Don't have an account? <span style={{ color: "red" }}>Sign up</span>
       </div>

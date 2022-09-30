@@ -10,7 +10,6 @@ import SignUpContainer from "./SignUpContainer";
 function SignUpPage() {
   const [openSignIn, setOpenSignIn] = React.useState(false);
   const [openSignUp, setOpenSignUp] = React.useState(false);
-
   return (
     <>
       <div className="signUp-page">

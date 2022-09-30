@@ -1,4 +1,5 @@
 import React from "react";
+import { signUpUser } from '../Actions/auth'
 
 function SignUpContainer() {
   const [username, setUsername] = React.useState('');
@@ -6,6 +7,14 @@ function SignUpContainer() {
   const [password, setPassword] = React.useState('');
   const [enableSignUp, setEnableSignUp] = React.useState(false);
   const [error, setError] = React.useState(null)
+
+  const handleSignUp = () => {
+    signUpUser(email, password, username)
+    .then(
+      (userCredential) => console.log(userCredential.user),
+      (error) => setError(error.message)
+    )
+  }
 
   React.useEffect(() => {
     if(`${password}`.length > 8){
@@ -35,7 +44,8 @@ function SignUpContainer() {
         placeholder="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <div className={`btn signUp__signUp-bar ${!enableSignUp ? 'deactivate' : ''}`}>SignUp</div>
+      {error && <p style={{ color : 'red' }}>Invalid user credientials</p>}
+      <div className={`btn signUp__signUp-bar ${!enableSignUp ? 'deactivate' : ''}`} onClick={handleSignUp}>SignUp</div>
       <div className="signIn__ques">
         Already have an account? <span style={{ color: "red" }}>Sign In</span>
       </div>

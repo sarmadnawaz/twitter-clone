@@ -1,11 +1,14 @@
 import './sass/main.scss';
-import SignUpPage from './components/SignUpPage'
+import { RouterProvider } from 'react-router-dom'
+import router from './routing/router'
+import UserProvider from './store/UserProvider'
+
 
 function App() {
   return (
-    <div className="App">
-      <SignUpPage />
-    </div>
+      <UserProvider>
+      <RouterProvider router={router} />
+      </UserProvider>
   );
 }
 
