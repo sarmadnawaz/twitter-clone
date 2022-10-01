@@ -6,7 +6,7 @@ export const signUpUser = async (email, password, username) => {
     const user = await createUserWithEmailAndPassword(auth, email, password);
     return user;
   } catch (error) {
-    return new Error(error.message);
+    throw new Error(error.message);
   }
 };
 

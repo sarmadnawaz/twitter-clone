@@ -1,0 +1,29 @@
+.feed {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    height: 100vh;
+    gap: 20px
+}
+.feed-left {
+    min-width: 500px;
+    width: 550px;
+    height: 100%;
+    overflow: scroll;
+}
+.feed-left::-webkit-scrollbar {
+    width: 0px;
+    height: 0%;
+}
+.feed-right {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: scroll;
+}
+.feed-right::-webkit-scrollbar {
+    width: 0px;
+    height: 0%;
+}

@@ -13,7 +13,7 @@ function SignUpPage() {
   return (
     <>
       <div className="signUp-page">
-        <img classname="signUp-page__twitter-logo" src="/twitterLogo.png"></img>
+        <img classname="signUp-page__twitter-logo" src="/img/twitter-logo-l.png"></img>
         <h1 className="signUp-page__header">Happening now</h1>
         <h2 className="signUp-page__sub-header">Join Twitter Today</h2>
         <div className="signUp-page__signUp-bar">

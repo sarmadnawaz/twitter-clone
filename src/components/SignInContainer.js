@@ -2,6 +2,7 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import { signInUser } from '../Actions/auth'
+import { Navigate } from "react-router-dom";
 
 
 function SignInContainer() {
@@ -13,7 +14,7 @@ function SignInContainer() {
     signInUser(email, password)
     .then(
       (userCredential) => {
-        console.log(userCredential.user)
+        Navigate('/dashboard')
         error  && setError(null)
       },
       (error) => setError(error.message)
@@ -22,7 +23,7 @@ function SignInContainer() {
 
   return (
     <div className="signIn">
-      <img classname="signIn__twitter-logo" src="/twitterLogo.png"></img>
+      <img className="signIn__twitter-logo" src="/img/twitter-logo-l.png"></img>
       <h2 className="SignIn-header">Sign in to Twitter</h2>
       <div className="signIn__signIn-bar">
         <FcGoogle /> Sign In with Google

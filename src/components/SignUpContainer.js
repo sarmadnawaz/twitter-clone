@@ -1,5 +1,6 @@
 import React from "react";
 import { signUpUser } from '../Actions/auth'
+import { useNavigate } from 'react-router-dom'
 
 function SignUpContainer() {
   const [username, setUsername] = React.useState('');
@@ -8,10 +9,13 @@ function SignUpContainer() {
   const [enableSignUp, setEnableSignUp] = React.useState(false);
   const [error, setError] = React.useState(null)
 
+  const navigate = useNavigate()
   const handleSignUp = () => {
     signUpUser(email, password, username)
     .then(
-      (userCredential) => console.log(userCredential.user),
+      (userCredential) => {
+        navigate('/dashboard')
+      },
       (error) => setError(error.message)
     )
   }
@@ -24,7 +28,7 @@ function SignUpContainer() {
 
   return (
     <div className="signUp">
-      <img classname="signUp__twitter-logo" src="/twitterLogo.png"></img>
+      <img className="signUp__twitter-logo" src="/img/twitter-logo-l.png"></img>
       <h2 className="SignUp-header">Sign Up to Twitter</h2>
       <input
         value={username}
