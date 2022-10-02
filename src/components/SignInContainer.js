@@ -2,19 +2,19 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import { signInUser } from '../Actions/auth'
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function SignInContainer() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [error, setError] = React.useState(null)
-
+  const navigate = useNavigate()
   const handleSignIn = () => {
     signInUser(email, password)
     .then(
       (userCredential) => {
-        Navigate('/dashboard')
+        navigate('/dashboard')
         error  && setError(null)
       },
       (error) => setError(error.message)

@@ -1,28 +1,22 @@
 import React from "react";
 import Tweet from "./tweet";
 import { TwitterEmbed } from "react-social-media-embed";
+import UploadTweet from './UploadTweet' 
 
 function Feed() {
   return (
     <div className="feed">
       <div className="feed-left">
+        <UploadTweet />
         <Tweet />
         <Tweet />
-
         <Tweet />
-
         <Tweet />
-
         <Tweet />
-
         <Tweet />
-
         <Tweet />
-
         <Tweet />
-
         <Tweet />
-
         <Tweet />
       </div>
       <div className="feed-right">
