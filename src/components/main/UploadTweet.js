@@ -9,8 +9,15 @@ import  UserContext from '../../store/userContext'
 function UploadTweet(){
     const [text, setText] = React.useState('')
     const [image, setImage] = React.useState(null);
+    const [status, setstatus] = React.useState('idle')
     const user = React.useContext(UserContext)
-
+    React.useEffect(() => {
+        if(text.length > 10 || image){
+            setstatus('success')
+        }else if(text.length < 10 ){
+            setstatus('idle')
+        }
+    }, [image, text])
     function handleImageUpload(e){
         const image = e.target.files[0]
         const id = uid();
@@ -24,7 +31,7 @@ function UploadTweet(){
         return
     }
     function handleUploadTweet(){
-        uploadTweetToFireStore({text, image,  username : user.displayName })
+        uploadTweetToFireStore({text, image,  username : user.displayName, profile : user.photoURL })
         .then(() => {
             setText('');
             setImage(null)
@@ -34,7 +41,7 @@ function UploadTweet(){
     return(
     <div className='upload-tweet'>
         <div className='upload-tweet-user_profile'>
-        <Avatar imageUrl={"https://xsgames.co/randomusers/avatar.php?g=male"} />
+        <Avatar imageUrl={user.photoURL || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"} />
         </div>
         <textarea className='upload-tweet-text' placeholder="What's happening" value={text} onChange={(e => setText(e.target.value))}/>
         <div className='upload-tweet-image'>
@@ -45,7 +52,7 @@ function UploadTweet(){
             <BsImage className='upload-tweet-image-icon' />
         </label>
         <input  hidden id='image-input' className='image-input' type="file" onChange={handleImageUpload} />
-        <button className='upload-tweet-btn' onClick={handleUploadTweet}>Tweet</button>       
+        <button className={`upload-tweet-btn ${status === 'success' ? '' : 'disable'}`} onClick={handleUploadTweet}>Tweet</button>       
         </div>
     </div>
     )

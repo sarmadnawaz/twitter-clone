@@ -2,12 +2,13 @@ import { auth } from "../firebase/firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { db } from "../firebase/firebase";
 import { addDoc, collection } from "firebase/firestore";
-export const signUpUser = async (email, password, username) => {
+export const signUpUser = async (email, password, username, profile) => {
   try {
     const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-    const userData = await addDoc(collection(db, 'users'), {email, password, username})
+    const userData = await addDoc(collection(db, 'users'), {email, password, username, profile })
     await updateProfile(userCredentials.user, {
-      displayName: username
+      displayName: username,
+      photoURL : profile
     }) 
     return userCredentials;
   } catch (error) {

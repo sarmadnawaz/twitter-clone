@@ -29,7 +29,8 @@
   align-items: center;
   justify-content: space-between;
 }
-.upload-tweet-submits button {
+.upload-tweet-btn {
+  border: none;
   background-color: black;
   color: white;
   font-size: 18px;
@@ -42,4 +43,9 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+.disable {
+  pointer-events:none;
+  background-color: rgba(0, 0, 0, 0.5);
+
 }

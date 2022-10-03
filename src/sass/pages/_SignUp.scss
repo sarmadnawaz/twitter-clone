@@ -28,3 +28,13 @@
     border-radius: 50px;
     text-align: center;
 }
+.profile-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.profile-input label {
+    color: rgba(0, 0, 255, 0.651);
+    border-bottom: 0.5px solid rgba(0, 0, 255, 0.651);
+}
